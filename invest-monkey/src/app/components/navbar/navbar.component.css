@@ -1,0 +1,11 @@
+.mat-toolbar{
+    background-color: #217910;
+    color: white;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+a{
+    font-size:medium;
+}

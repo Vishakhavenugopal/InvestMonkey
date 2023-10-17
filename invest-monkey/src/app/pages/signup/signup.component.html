@@ -1,0 +1,161 @@
+<div class="main-content">
+<app-navbar></app-navbar>
+<div class="bootstrap-wrapper">
+
+ 
+
+    <div class="container">
+<div class="row" style="margin-top: 30px;">
+<div class="col-md-6 offset-md-3">
+<mat-card>
+<div class="container text-center">
+<img src="../../../assets/logo.jpg" alt="fidelity-Pariksha-Logo" height="100px" width="100px"/>
+</div>
+
+ 
+
+                <h1 class="text-center">Register Here</h1>
+
+ 
+
+                <!-- {{user|json}} -->
+
+ 
+
+                <form [formGroup]="clientForm">
+<!-- First Name -->
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>First Name</mat-label>
+<input   formControlName="fname"    name="fname"
+                    matInput placeholder="Your First Name" required>
+<mat-error *ngIf="clientForm?.get('email')?.hasError('required')">First Name is required</mat-error>
+<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+ 
+
+                  <!-- Last Name -->
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>Last Name</mat-label>
+<input 
+                            name="lname" formControlName="lname"
+                            matInput placeholder="Your Last Name" required>
+
+<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+ 
+
+                  <!-- Date of Birth -->
+<mat-form-field class="full-width" appearance="outline" >
+<mat-label>Date of Birth</mat-label>
+<input 
+                    formControlName="dateOfBirth"
+                            name="dateOfBirth"
+                    matInput placeholder="YYYY-MM-DD" required>
+<mat-error *ngIf="clientForm?.get('dateOfBirth')?.hasError('required')">Date of Birth is required</mat-error>
+<mat-error *ngIf="clientForm.get('dateOfBirth')?.hasError('pattern')">Invalid date format</mat-error>
+<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+ 
+
+                  <!-- Country -->
+
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>Select Country</mat-label>
+<mat-select formControlName="country">
+<mat-option *ngFor="let country of countries" [value]="country.value">
+                        {{ country.name }}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+ 
+
+                  <mat-form-field *ngIf="selectedCountry === 'IND'" class="full-width" appearance="outline">
+<input matInput formControlName="aadhar" placeholder="Aadhar Number">
+</mat-form-field>
+
+<mat-form-field *ngIf="selectedCountry === 'US'" class="full-width" appearance="outline">
+<input matInput formControlName="ssn" placeholder="Social Security Number">
+</mat-form-field>
+
+
+ 
+
+                  <mat-form-field class="full-width" appearance="outline" >
+<mat-label>Postal Code</mat-label>
+<input 
+                    formControlName="postalCode"
+                            name="postalCode"
+                    matInput placeholder="Your postal code" required>
+<mat-error *ngIf="clientForm?.get('postalCode')?.hasError('required')">Postal Code is required</mat-error>
+<mat-error *ngIf="clientForm?.get('postalCode')?.hasError('pattern')">Invalid Postal Code</mat-error>
+<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+ 
+
+                    <!-- Email -->
+<mat-form-field class="full-width" appearance="outline" type="email">
+<mat-label>Email</mat-label>
+<input formControlName="email" name="email"
+                      matInput placeholder="Your Email" required>
+<mat-error *ngIf="clientForm?.get('email')?.hasError('required')">Email is required</mat-error>
+<mat-error *ngIf="clientForm?.get('email')?.hasError('email')">Invalid email</mat-error>
+</mat-form-field>
+
+ 
+
+                    <!-- Password Field -->
+
+ 
+
+                                <mat-form-field class="full-width" appearance="outline">
+<mat-label>Password</mat-label>
+<input type="password" 
+                                   formControlName="password"
+                                    name="password"
+                                    matInput placeholder="Password" required>
+<mat-error *ngIf="clientForm?.get('password')?.hasError('required')">Password is required</mat-error>
+<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+
+ 
+
+                          <!-- Phone -->
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>Phone</mat-label>
+<input 
+                           formControlName="phone"
+                                    name="phone"
+                            matInput placeholder="Your Phone Number" required>
+<!-- <mat-hint>Hint</mat-hint> -->
+</mat-form-field>
+
+ 
+
+                          <div class="container text-center">
+<button type="submit" mat-raised-button color="success" (click)="submitForm()">Register</button>
+<button type="reset" style = "margin-left: 60px;" mat-raised-button color="clear">Clear</button>
+</div>
+</form>
+</mat-card>
+</div>
+
+ 
+
+        </div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>
+
+ 

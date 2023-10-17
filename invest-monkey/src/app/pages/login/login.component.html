@@ -1,0 +1,54 @@
+<div class="main-content">
+<app-navbar></app-navbar>
+<div class="bootstrap-wrapper">
+
+    <div class="container">
+        <div class="row mt20" style="margin-top: 30px;">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                <div class="container text-center">
+                    <img src="../../../assets/logo.jpg" alt="fidelity-Pariksha-Logo" height="100px" width="100px"/>
+                </div>
+                <h1 class="text-center">Login Here</h1>
+                <div *ngIf="message==='Error occurred during login'">
+                  <p class="invaliduser">INVALID CREDENTIALS, TRY AGAIN !!!!</p>
+                </div>
+                <form action="">
+                    <!-- UserName Field -->
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Username</mat-label>
+                      <input 
+                              name="username"
+                      matInput placeholder="Enter Here" required
+                      [(ngModel)]="userEmail">
+                      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                              <!-- <mat-hint>Valid User Name</mat-hint> -->
+                    </mat-form-field>
+                    <!-- Password Field -->
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>User Password</mat-label>
+                                    <input type="password" 
+                                    name="password"
+                                    matInput placeholder="Password" required
+                                    [(ngModel)]="userPass">
+                                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                    <!-- <mat-hint>Hint</mat-hint> -->
+                                  </mat-form-field>
+
+                                  <div class="container text-center">
+                                    <button mat-raised-button color="success" (click)="verifyUser()">Login</button>
+                                    <button  type="reset" mat-raised-button color="clear" class="ml20">Reset</button>
+                                  </div>
+                                
+                    </form>
+                </mat-card>
+
+            </div>
+        
+            </div>
+            </div>
+            </div>
+            </div>
+            <app-footer></app-footer>
+             

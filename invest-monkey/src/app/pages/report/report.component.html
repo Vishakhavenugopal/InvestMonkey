@@ -1,0 +1,72 @@
+<div class="main-content">
+<app-navbar2></app-navbar2>
+<div>
+    <h2>Your Investment Report</h2>
+    <div>
+      <button (click)="showBuyReport()">Buy Report</button>
+      <button (click)="showSellReport()">Sell Report</button>
+      <!-- <button (click)="showProfitLossReport()">Profit Loss Report</button> -->
+    </div>
+    <div *ngIf="currentReport === 'buy'">
+      <div class="table-card">
+      <h3>Buy Report</h3>
+      <button (click)="generateBuyReportCsv()">Download Buy Report</button>
+      <table #buyTable>
+        <!-- Table headers -->
+        <tr>
+          <th>Instrument ID</th>
+          <th>Trade ID</th>
+          <th>Quantity</th>
+          <th>Execution Price</th>
+        </tr>
+        <!-- Table data for Buy Report -->
+        <tr *ngFor="let trade of buyReportData; let i=index">
+          <td>{{ trade.instrumentId }}</td>
+          <td>{{ trade.tradeId }}</td>
+          <td>{{ trade.quantity }}</td>
+          <td>{{ trade.executionPrice | currency}} </td>
+        </tr>
+      </table>
+    </div>
+    </div>
+    <div *ngIf="currentReport === 'sell'">
+      <div class="table-card">
+      <h3>Sell Report</h3>
+      <button (click)="generateSellReportCsv()">Download Sell Report</button>
+      <table #sellTable>
+        <!-- Table headers -->
+        <tr>
+          <th>Instrument ID</th>
+          <th>Trade ID</th>
+          <th>Quantity</th>
+          <th>Execution Price</th>
+        </tr>
+        <!-- Table data for Sell Report -->
+        <tr *ngFor="let trade of sellReportData; let i=index">
+          <td>{{ trade.instrumentId }}</td>
+          <td>{{ trade.tradeId }}</td>
+          <td>{{ trade.quantity }}</td>
+          <td>{{ trade.executionPrice | currency}} </td>
+        </tr>
+      </table>
+    </div>
+    </div>
+    <!-- <div *ngIf="currentReport === 'profitLoss'">
+      <h3>Profit Loss Report</h3>
+      
+      <div>
+        <app-buy-sell-chart [data]="buySellChartData"></app-buy-sell-chart>
+      </div>
+      
+      <div>
+        <h4>Cash Balance: {{ cashBalance }}</h4>
+      </div>
+      
+      <div>
+        <app-holdings-by-category-chart [data]="holdingsByCategoryData"></app-holdings-by-category-chart>
+      </div>
+    </div> -->
+  </div>
+  </div>
+  <app-footer></app-footer>
+  

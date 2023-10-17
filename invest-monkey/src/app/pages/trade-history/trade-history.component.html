@@ -1,0 +1,29 @@
+<div class="main-content">
+  <app-navbar2></app-navbar2>
+<div class="trade-history-container">
+  <h2>Trade History</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Instrument Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Direction</th>
+        <!-- <th>Type</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trade of tradeHistory; let i=index;">
+        <td>{{ trade.tradeId }}</td>
+        <td>{{ trade.instrumentId }}</td>
+        <td>{{ trade.quantity }}</td>
+        <td>{{ trade.executionPrice| currency }}</td>
+        <td>{{ trade.direction | buy }}</td>
+        <!-- <td>{{ trade. }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<app-footer></app-footer>

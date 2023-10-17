@@ -1,0 +1,169 @@
+/* Search Container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 80%;
+  max-width: 400px;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+mat-card {
+  width: 300px;
+  margin: 20px;
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border-radius: 5%;
+}
+
+mat-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Style the "Buy" button */
+.buy-button {
+  background-color: green !important;
+  color: white !important;
+  margin-right: 5px;
+}
+
+/* Style the "Cancel" button */
+.cancel-button {
+  background-color: rgb(27, 26, 26) !important;
+  color: white !important;
+  margin-left: 5px;
+}
+
+
+mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+/* Buy Dialog */
+.buy-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.buy-dialog-content {
+  text-align: center;
+}
+
+/* client-buy.component.css */
+
+/* Center the "See More" button */
+/* Center the "See More" button */
+/* Center the "See More" button */
+.centered-see-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 5px; /* Adjust to center it vertically within the viewport height */
+}
+
+/* See More Button */
+.see-more-button {
+  background-color: #216e33 !important; /* Change to your desired button color */
+  color: #fff;
+  font-size: 24px; /* Adjust the font size as needed */
+  padding: 10px 20px; /* Adjust padding for button size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.see-more-button:hover {
+  background-color: #8fb698 !important;
+  color: black; /* Change to the hover color you prefer */
+}
+
+
+
+
+
+
+/* Optional: Styling for Input Fields */
+mat-form-field {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Optional: Styling for Buy Button */
+button[mat-raised-button] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+mat-card-content p {
+  border-bottom: 1px solid #ccc; /* Add a bottom border to each <p> element */
+  margin-bottom: 8px; /* Add some spacing between <p> elements */
+  padding-bottom: 4px; /* Add padding to separate the border from text */
+}
+
+button[mat-raised-button]:hover {
+  background-color: #0056b3;
+}
+
+
+/* CSS for Category Filter Buttons */
+.category-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.category-filter button {
+  margin: 20px 10px;
+  background-color: #181a1b;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-filter button:hover {
+  background-color: #444444;
+}
+
+.main-content {
+
+  min-height: calc(100vh - (2px));
+}
+
+

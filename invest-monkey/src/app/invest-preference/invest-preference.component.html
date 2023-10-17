@@ -1,0 +1,41 @@
+<app-navbar2 *ngIf="loggedIn && clientInvestmentPreferences.clientId"></app-navbar2>
+<div *ngIf="!isTermsAgreed" class="terms-and-conditions">
+  <h2>Terms and Conditions</h2>
+   Will you trust me ? 
+  <p>I agree to the terms and conditions of Investment Preference</p>
+  <button mat-raised-button (click)="agreeToTerms()">Agree</button>
+  <button mat-raised-button color="warn" (click)="cancelAndRedirect()">Cancel</button>
+</div>
+
+<div *ngIf="isTermsAgreed" class="robo-advicer-container">
+<div class="container">
+  <h2>Your Investment Preferences</h2>
+
+  <mat-form-field>
+    <mat-label>Investment Purpose</mat-label>
+    <input matInput [(ngModel)]="clientInvestmentPreferences.investmentPurpose" id="investmentPurpose">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Income Category</mat-label>
+    <mat-select [(ngModel)]="clientInvestmentPreferences.incomeCategory" id="incomeCategory">
+      <mat-option *ngFor="let category of incomeCategories" [value]="category">{{ category }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Risk Tolerance</mat-label>
+    <mat-select [(ngModel)]="clientInvestmentPreferences.riskTolerance" id="riskTolerance">
+      <mat-option *ngFor="let tolerance of riskTolerances" [value]="tolerance">{{ tolerance }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Length of Investment</mat-label>
+    <input matInput type="number" [(ngModel)]="clientInvestmentPreferences.lengthOfInvestment" id="lengthOfInvestment">
+  </mat-form-field>
+
+  <button mat-raised-button color="success" *ngIf="!clientInvestmentPreferences.clientId" (click)="postClientInvestmentPreferences()">Submit Preferences</button>
+  <button mat-raised-button color="success" *ngIf="loggedIn && clientInvestmentPreferences.clientId" (click)="updateClientInvestmentPreferences()">Update Preferences</button>
+</div>
+<app-footer></app-footer>

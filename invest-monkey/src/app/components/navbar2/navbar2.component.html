@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <a routerLink="/home" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>whatshot</mat-icon>
+    </a>
+    <span>InvestMonkey</span>
+    <span class="example-spacer"></span>
+
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/portfolio'" fxLayoutAlign="center center">
+      Portfolio
+    </button>
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/buy'" fxLayoutAlign="center center">
+      Buy
+    </button>
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/tradeHistory'" fxLayoutAlign="center center">
+      Trade History
+    </button>
+
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/roboAdvicer'" fxLayoutAlign="center center">
+      Robo Advisor
+    </button>
+    
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/report'" fxLayoutAlign="center center">
+      Report
+    </button>
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/investPrefernce'" fxLayoutAlign="center center">
+      Preferences
+    </button>
+
+    <button mat-button class="account-button" fxLayout="row" [routerLink]="'/accountDetails'" fxLayoutAlign="center center">
+      <mat-icon>account_circle</mat-icon>
+      Account
+    </button>
+   
+    
+    
+      
+  </mat-toolbar>

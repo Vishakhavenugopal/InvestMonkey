@@ -1,0 +1,79 @@
+<div class="main-content">
+<app-navbar2></app-navbar2>
+<div *ngIf="!isTermsAgreed" class="terms-and-conditions">
+    <h2>Terms and Conditions</h2>
+     Will you trust me ? 
+    <p>I agree to the terms and conditions of Robo advisor</p>
+    <button mat-raised-button (click)="agreeToTerms()">Agree</button>
+    <button mat-raised-button color="warn" (click)="cancelAndRedirect()">Cancel</button>
+  </div>
+
+<div *ngIf="isTermsAgreed" class="robo-advicer-container">
+
+  
+  <h2 style="text-align: center; font-weight: bolder; margin-bottom: 20px; font-size: 28px;" >Robo Advisor</h2>
+
+  <h3 style="text-align: center; font-weight: bold;">Top 5 Instruments to Buy</h3>
+  <div class="buy-instruments">
+    <mat-card *ngFor="let instrument of topBuyInstruments">
+      <mat-card-title>{{ instrument.instrument.instrumentDescription }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Instrument ID:</strong> {{ instrument.instrument.instrumentId }}</p>
+        <p><strong>Instrument Name:</strong> {{ instrument.instrument.instrumentDescription }}</p>
+        <p><strong>Bid Price:</strong> {{ instrument.bidPrice }}</p>
+        <p><strong>Category:</strong> {{ instrument.instrument.categoryId }}</p>
+        <p><strong>Min Quantity:</strong> {{ instrument.instrument.minQuantity }}</p>
+        <p><strong>Max Quantity:</strong> {{ instrument.instrument.maxQuantity }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openBuyDialog(instrument)" class="buy-button">Buy</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <h3 style=" text-align: center; font-weight: bold;">Top 5 Instruments to Sell</h3>
+  <div class="sell-instruments">
+    <mat-card *ngFor="let instrument of topSellInstruments">
+      <mat-card-title>{{ instrument.instrument.instrumentDescription }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Instrument ID:</strong> {{ instrument.instrument.instrumentId }}</p>
+        <p><strong>Instrument Name:</strong> {{ instrument.instrument.instrumentDescription }}</p>
+        <p><strong>Ask Price:</strong> {{ instrument.askPrice }}</p>
+        <p><strong>Category:</strong> {{ instrument.instrument.categoryId }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openSellDialog(instrument)" color="warn" class="sell-button">Sell</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Buy Dialog -->
+<div *ngIf="isBuyDialogOpen" class="buy-dialog">
+  <div class="buy-dialog-content">
+    <h2>Buy Instrument</h2>
+    <p><strong>Description:</strong> {{ selectedInstrument?.instrument.instrumentDescription }}</p>
+    <p><strong>Bid Price:</strong> {{ selectedInstrument?.bidPrice }}</p>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Quantity" [(ngModel)]="quantity" [max]="selectedInstrument?.instrument.maxQuantity">
+    </mat-form-field>
+    <button mat-raised-button (click)="buyInstrument()" class="buy-button">Buy</button>
+    <button mat-raised-button (click)="closeBuyDialog()"  class="cancel-button">Cancel</button>
+  </div>
+</div>
+
+<!-- Sell Dialog -->
+<div *ngIf="isSellDialogOpen" class="sell-dialog">
+  <div class="sell-dialog-content">
+    <h2>Sell Instrument</h2>
+    <p><strong>Description:</strong> {{ selectedInstrument?.instrument.instrumentDescription }}</p>
+    <p><strong>Ask Price:</strong> {{ selectedInstrument?.askPrice }}</p>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Quantity" [(ngModel)]="quantity" [max]="selectedInstrument?.quantity">
+    </mat-form-field>
+    <button mat-raised-button (click)="sellInstrument()" class="sell-button">Sell</button>
+    <button mat-raised-button (click)="closeSellDialog()"  class="cancel-button">Cancel</button>
+  </div>
+</div>
+</div>
+<app-footer></app-footer>

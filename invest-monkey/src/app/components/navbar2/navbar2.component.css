@@ -1,0 +1,25 @@
+.mat-toolbar{
+    background-color: #217910;
+    color: white;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+a{
+    font-size:medium;
+}
+
+.account-button { /* Example background color */
+    color: white; /* Text color */
+    padding: 2px 8px;
+    display: flex;
+    /* align-items: center; */
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: medium;
+
+  }
+
+ 
+  

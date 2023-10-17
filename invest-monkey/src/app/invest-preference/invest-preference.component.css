@@ -1,0 +1,52 @@
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    margin-right: 10px;
+    color: green;
+  }
+
+  .mat-success:hover {
+    background-color: #f5f5f5 !important;
+    color: black !important;
+  }
+  
+  .mat-success {
+     background-color: #216e33 !important;
+    color: #f0fff3 !important;
+  }
+  
+  .terms-and-conditions {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .terms-and-conditions h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .terms-and-conditions p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .terms-and-conditions button {
+    margin-right: 10px;
+  }
+  
+  .mat-icon-button.mat-success {
+    color:#155724;
+  }
+  

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fidelity.integration.ClientMapper">
+
+  <resultMap id="clientResultMap" type="com.fidelity.investmonkey.models.Client">
+    <id property="clientId" column="clientid"/>
+    <result property="firstName" column="firstname"/>
+    <result property="lastName" column="lastname"/>
+    <result property="phone" column="phone"/>
+    <result property="email" column="email"/>
+    <result property="dateOfBirth" column="dateofbirth"/>
+    <result property="country" column="country"/>
+    <result property="postalCode" column="postalcode"/>
+    <result property="password" column="password"/>
+
+    <!-- Mapping for clientIdentification -->
+    <association property="clientIdentification" javaType="com.fidelity.investmonkey.models.ClientIdentification">
+      <result property="clientIdentificationType" column="identificationtype"/>
+      <result property="clientIdentificationValue" column="identificationvalue"/>
+    </association>
+  </resultMap>
+
+  <select id="getClientById" resultMap="clientResultMap">
+    SELECT
+      c.clientid, c.firstname, c.lastname, c.phone, c.email, c.dateofbirth, c.country,
+      c.postalcode, c.password, id.identificationtype, id.identificationvalue FROM
+      client c LEFT JOIN client_identification id ON c.clientid = id.clientid WHERE c.clientid = #{clientId}
+  </select>
+  
+  <select id="getClientByEmail" resultMap="clientResultMap" parameterType="java.lang.String">
+    SELECT
+      c.clientid, c.firstname, c.lastname, c.phone, c.email, c.dateofbirth, c.country,
+      c.postalcode, c.password, id.identificationtype, id.identificationvalue FROM
+      client c LEFT JOIN client_identification id ON c.clientid = id.clientid WHERE c.email = #{email}
+  </select>
+  
+   <insert id="insertClientIdentification" parameterType="com.fidelity.investmonkey.models.Client">
+    INSERT INTO client_identification (clientid, identificationtype, identificationvalue)
+    VALUES (#{clientId}, #{clientIdentification.clientIdentificationType}, #{clientIdentification.clientIdentificationValue})
+  </insert>
+  
+   <insert id="insertNewClient" parameterType="com.fidelity.investmonkey.models.Client">
+      INSERT INTO client (clientid, firstname, lastname, email, dateofbirth, country, phone, postalcode, password)
+    VALUES (#{clientId}, #{firstName}, #{lastName}, #{email}, #{dateOfBirth}, #{country}, #{phone}, #{postalCode}, #{password})
+  </insert>
+  
+   <update id="updateClient" parameterType="com.fidelity.investmonkey.models.Client">
+    UPDATE client SET firstname = #{firstName},lastname = #{lastName},email = #{email},dateofbirth = #{dateOfBirth},phone = #{phone},postalcode = #{postalCode},
+    password = #{password} WHERE clientid = #{clientId}
+  </update>
+
+<delete id="deleteClientIdentification" parameterType="java.lang.String">
+    DELETE FROM client_identification WHERE clientid = #{clientId}
+  </delete>
+  
+  <delete id="deleteClient" parameterType="java.lang.String">
+    DELETE FROM client WHERE clientid = #{clientId}
+  </delete>
+  
+   <update id="updatePassword" parameterType="java.util.Map">
+    UPDATE client SET password = #{password} WHERE clientid = #{clientId}
+  </update>
+  
+   <insert id="insertClientBalance" parameterType="java.util.Map">
+    INSERT INTO balance (clientId, balance)
+    VALUES (#{clientId}, #{balance})
+  </insert>
+  
+  <update id="updateClientBalance" parameterType="com.fidelity.investmonkey.models.Balance">
+	  update balance SET balance= #{balance} WHERE clientid=#{clientId}
+  </update>
+  
+   <resultMap id="balanceResultMap" type="com.fidelity.investmonkey.models.Balance">
+    <id property="clientId" column="clientId"/>
+    <result property="balance" column="balance"/>
+  </resultMap>
+
+  <!-- Retrieve a client's balance by client ID -->
+  <select id="getClientBalance" parameterType="java.lang.String" resultMap="balanceResultMap">
+    SELECT clientId, balance
+    FROM balance
+    WHERE clientId = #{clientId}
+  </select>
+  <insert id="addOrder" parameterType="Order">
+	  INSERT INTO INVEST_ORDER (ORDERID,INSTRUMENTID,QUANTITY,TARGETPRICE,DIRECTION,CLIENTID) values(#{orderId},#{InstrumentId},#{quantity},#{targetPrice},#{direction},#{clientId})
+  </insert>
+  
+  <insert id="addTrade" parameterType="Trade">
+	  INSERT INTO trade (QUANTITY,EXECUTIONPRICE,DIRECTION,ORDERID,CASHVALUE,CLIENTID,INSTRUMENTID ) values(#{quantity},#{executionPrice},#{direction},#{order.orderId},#{cashValue},#{clientId},#{instrumentId})
+  </insert>
+  
+  <resultMap id="tradeResultMap" type="com.fidelity.investmonkey.models.Trade">
+	  <id property="clientId" column="CLIENTID"/>
+	  <result property="tradeId" column="TRADEID"/>
+	  <result property="quantity" column="QUANTITY"/>
+	  <result property="executionPrice" column="EXECUTIONPRICE"/>
+	  <result property="direction" column="DIRECTION"/>
+	  <result property="cashValue" column="CASHVALUE"/>
+	  <result property="instrumentId" column="INSTRUMENTID"/>
+  </resultMap>
+  <resultMap id="orderResultMap" type="com.fidelity.investmonkey.models.Order">
+	  <id property="clientId" column="CLIENTID"/>
+	  <result property="InstrumentId" column="INSTRUMENTID"/>
+	  <result property="quantity" column="QUANTITY"/>
+	  <result property="direction" column="DIRECTION"/>
+	  <result property="orderId" column="ORDERID"/>
+	  <result property="targetPrice" column="TARGETPRICE"/>
+	  <collection property="order" resultMap="tradeResultMap" />
+</resultMap>
+  <select id="getTradeHistoryOfClientByClientId" resultMap="tradeResultMap">
+	select TRADEID,QUANTITY,EXECUTIONPRICE,DIRECTION,ORDERID,CASHVALUE,CLIENTID,INSTRUMENTID,ORDERID from trade where clientid=#{clientId} order by tradeid desc FETCH FIRST 100 ROWS ONLY
+</select>
+<resultMap id="HoldingResultMap" type="com.fidelity.investmonkey.models.Holdings">
+	<result property="instrumentId" column="INSTRUMENTID"/>
+	<result property="instrumentDescription" column="INSTRUMENTDESCRIPTION"/>
+	<result property="categoryId" column="CATEGORYID"/>
+	<result property="askNumber" column="ASKNUMBER"/>
+	<result property="quantity" column="QUANTITY"/>
+	<result property="totalPrice" column="TOTALPRICE"/>
+</resultMap>
+<select id="getHoldingOfClientByInstrumentId" resultMap="HoldingResultMap" parameterType="java.util.Map">
+	select INSTRUMENTID,INSTRUMENTDESCRIPTION,CATEGORYID,ASKNUMBER,QUANTITY,TOTALPRICE from holding where clientid=#{clientId} and instrumentId=#{instrumentId}
+</select>	
+
+<delete id="deleteHolding" >
+	delete from HOLDING where CLIENTID=#{clientId} and INSTRUMENTID=#{instrumentId}
+</delete>
+
+<select id="getHoldingsOfClient" resultMap="HoldingResultMap" parameterType="String">
+	select INSTRUMENTID,INSTRUMENTDESCRIPTION,CATEGORYID,ASKNUMBER,QUANTITY,TOTALPRICE from holding where clientid=#{clientId}
+</select>	
+<insert id="insertInstrumentToHoldingsOfClient" parameterType="java.util.Map">
+	INSERT INTO HOLDING(INSTRUMENTID,INSTRUMENTDESCRIPTION,CATEGORYID,ASKNUMBER,QUANTITY,TOTALPRICE,CLIENTID) VALUES(#{trade.instrumentId},#{instrumentDescription},#{categoryId},#{askNumber},#{trade.quantity},#{trade.cashValue},#{clientId})
+</insert>
+<update id="updateHoldingsOfClient" parameterType="java.util.Map">
+    UPDATE HOLDING SET QUANTITY=#{holding.quantity}, TOTALPRICE=#{holding.totalPrice} where CLIENTID=#{clientId} and INSTRUMENTID=#{holding.instrumentId}
+</update>
+
+<resultMap id="InvestmentPreferenceResultMap" type="com.fidelity.investmonkey.models.InvestmentPreference">
+    <id property="clientId" column="ClientId" />
+    <result property="investmentPurpose" column="INVESTMENT_PURPOSE" />
+    <result property="incomeCategory" column="INCOME_CATEGORY" javaType="IncomeCategory"/>
+     <result property="riskTolerance" column="risk_tolerance" javaType="RiskTolerance"/>
+    <result property="lengthOfInvestment" column="LENGTH_OF_INVESTMENT" />
+</resultMap>
+
+
+
+<insert id="insertInvestmentPreference" parameterType="com.fidelity.investmonkey.models.InvestmentPreference">
+    INSERT INTO CLIENT_PREF (ClientId, INVESTMENT_PURPOSE, INCOME_CATEGORY, RISK_TOLERANCE, LENGTH_OF_INVESTMENT)
+    VALUES (#{clientId}, #{investmentPurpose}, #{incomeCategory}, #{riskTolerance}, #{lengthOfInvestment})
+</insert>
+
+<select id="selectInvestmentPreferenceByClientId" parameterType="String" resultMap="InvestmentPreferenceResultMap">
+    SELECT ClientId, INVESTMENT_PURPOSE, INCOME_CATEGORY, RISK_TOLERANCE, LENGTH_OF_INVESTMENT
+    FROM CLIENT_PREF
+    WHERE ClientId = #{clientId}
+</select>
+
+<update id="updateInvestmentPreference" parameterType="com.fidelity.investmonkey.models.InvestmentPreference">
+    UPDATE CLIENT_PREF
+    SET INVESTMENT_PURPOSE = #{investmentPurpose},
+        INCOME_CATEGORY = #{incomeCategory},
+        RISK_TOLERANCE = #{riskTolerance},
+        LENGTH_OF_INVESTMENT = #{lengthOfInvestment}
+    WHERE ClientId = #{clientId}
+</update>
+
+
+
+</mapper>
