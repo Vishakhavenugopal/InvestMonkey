@@ -23,7 +23,7 @@ export class VerifyService {
     }
   }];
 
-  public readonly url:string="http://65.2.3.57:8080/client";
+  public readonly url:string="https://a721308.roifmr.com/client";
   currentClient:Client={
     clientId:'',
     email:'',
@@ -58,7 +58,7 @@ export class VerifyService {
         email: email,
         password: password
       };
-    const loginUrl:string = "http://65.2.3.57:8080/client";
+    const loginUrl:string = "https://a721308.roifmr.com/client";
 
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     

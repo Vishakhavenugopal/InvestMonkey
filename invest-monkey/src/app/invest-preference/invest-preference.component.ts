@@ -23,7 +23,7 @@ enum RiskTolerance {
   styleUrls: ['./invest-preference.component.css']
 })
 export class InvestPreferenceComponent implements OnInit {
-  private apiBaseUrl = 'http://65.2.3.57:8080/client/pref';
+  private apiBaseUrl = 'https://a721308.roifmr.com/client/pref';
   public clientInvestmentPreferences: ClientInvestmentPreferences;
   public loggedIn = false;  
   currentClientId: any;
