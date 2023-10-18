@@ -23,7 +23,6 @@ export class AccountDetailsComponent implements OnInit
 
   signout():void 
   {
-    window.location.reload();
     this.router.navigate(['/landing']);
   }
 
