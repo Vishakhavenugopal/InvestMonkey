@@ -23,7 +23,7 @@ export class AccountDetailsComponent implements OnInit
 
   signout():void 
   {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   
