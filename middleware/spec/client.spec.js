@@ -1,6 +1,6 @@
 const request = require('request');
 const app = require('../app');  
-const baseUrl = 'http://localhost:3004'; 
+const baseUrl = 'http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3004'; 
 var http = require('http');
 
 describe('Express API', () => {

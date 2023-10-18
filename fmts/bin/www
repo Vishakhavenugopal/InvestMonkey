@@ -20,7 +20,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-console.log('Server started at http://localhost:' + port);
+console.log('Server started at http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:' + port);
 
 /**
  * Listen on provided port, on all network interfaces.

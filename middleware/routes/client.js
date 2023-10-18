@@ -206,7 +206,7 @@ router.get('/roboAdvisor/:id', function(req,res,next)
 
 
 async function getClientBalance(id) {
-    return axios.get('http://localhost:8080/client/clientBalance/'+id)
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/clientBalance/'+id)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -214,7 +214,7 @@ async function getClientBalance(id) {
 }
 
 async function getRoboAdvice(id) {
-    return axios.get('http://localhost:8080/client/roboAdvisor/'+id)
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/roboAdvisor/'+id)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -222,7 +222,7 @@ async function getRoboAdvice(id) {
 }
 
 async function getTradeHistory(id) {
-    return axios.get('http://localhost:8080/client/tradeHistory/'+id)
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/tradeHistory/'+id)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -230,7 +230,7 @@ async function getTradeHistory(id) {
 }
 
 async function postTrade(postRequest) {
-    return axios.post('http://localhost:8080/client/trade', postRequest)
+    return axios.post('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/trade', postRequest)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -238,7 +238,7 @@ async function postTrade(postRequest) {
 };
 
 async function getHoldings(id) {
-    return axios.get('http://localhost:8080/client/holdings/'+id)
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/holdings/'+id)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -246,7 +246,7 @@ async function getHoldings(id) {
 }
 
 async function getPrices() {
-    return axios.get('http://localhost:8080/client/prices')
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/prices')
     .then(response => {
         console.log(response.data);
         return response.data
@@ -254,7 +254,7 @@ async function getPrices() {
 };
 
 async function postPref(postRequest) {
-    return axios.post('http://localhost:8080/client/pref', postRequest)
+    return axios.post('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/pref', postRequest)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -262,7 +262,7 @@ async function postPref(postRequest) {
 };
 
 async function putPref(updatedPref) {
-    return axios.put('http://localhost:8080/client/pref', updatedPref)
+    return axios.put('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/pref', updatedPref)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -270,7 +270,7 @@ async function putPref(updatedPref) {
 };
 
 async function getPref(id) {
-    return axios.get('http://localhost:8080/client/pref/'+id)
+    return axios.get('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/pref/'+id)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -278,7 +278,7 @@ async function getPref(id) {
 }
 
 async function clientLogin(loginRequest) {
-    return axios.post('http://localhost:8080/client/login', loginRequest)
+    return axios.post('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/login', loginRequest)
     .then(response => {
         console.log(response.data);
         return response.data
@@ -286,7 +286,7 @@ async function clientLogin(loginRequest) {
 };
 
 async function clientRegister(registerRequest) {
-    return axios.post('http://localhost:8080/client/register', registerRequest)
+    return axios.post('http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client/register', registerRequest)
     .then(response => {
         console.log(response.data);
         return response.data

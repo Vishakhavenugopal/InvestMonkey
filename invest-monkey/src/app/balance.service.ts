@@ -16,7 +16,7 @@ export class BalanceService {
   constructor(private http:HttpClient){
 
   }
-  public readonly url:string="http://localhost:8080/client";
+  public readonly url:string="http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:8080/client";
 
   pushNewBalance(clientId:string){
     const balance={

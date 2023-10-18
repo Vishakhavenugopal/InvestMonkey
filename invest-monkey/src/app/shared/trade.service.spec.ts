@@ -40,7 +40,7 @@ describe('TradeService', () => {
     //   mockPrices=prices;
     // });
 
-    // const req = httpTestingController.expectOne(`http://localhost:3000/fmts/trades/prices`);
+    // const req = httpTestingController.expectOne(`http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/trades/prices`);
     // expect(req.request.method).toEqual('GET');
 
     // req.flush(mockPrices);

@@ -45,7 +45,7 @@ class FmtsServiceTest {
 
     @Test
     void getClientIdFromFmts_shouldReturnClientId() {
-        String apiUrl = "http://localhost:3000/fmts/client";
+        String apiUrl = "http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/client";
 
         ClientInfo request = new ClientInfo("jdd@gmail.com", "", "");
         String responseJson = "{\"clientId\": \"123456\"}";
@@ -63,7 +63,7 @@ class FmtsServiceTest {
     
     @Test
     void getClientIdFromFmts_shouldReturnToken() {
-        String apiUrl = "http://localhost:3000/fmts/client";
+        String apiUrl = "http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/client";
 
         ClientInfo request = new ClientInfo("jdd@gmail.com", "", "");
         String responseJson = "{\"token\": \"1506685989\"}";

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class InstrumentService {
-  private apiUrl = 'http://localhost:3200/client/prices';
+  private apiUrl = 'http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client/prices';
 
   constructor(private http: HttpClient) {}
 

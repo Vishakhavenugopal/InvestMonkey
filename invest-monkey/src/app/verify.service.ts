@@ -23,7 +23,7 @@ export class VerifyService {
     }
   }];
 
-  public readonly url:string="http://localhost:3200/client";
+  public readonly url:string="http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client";
   currentClient:Client={
     clientId:'',
     email:'',
@@ -58,7 +58,7 @@ export class VerifyService {
         email: email,
         password: password
       };
-    const loginUrl:string = "http://localhost:3200/client";
+    const loginUrl:string = "http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client";
 
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     

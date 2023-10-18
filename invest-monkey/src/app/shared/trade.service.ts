@@ -8,8 +8,8 @@ import { Price } from '../models/price';
   providedIn: 'root'
 })
 export class TradeService {
-  price_url="http://localhost:3000/fmts/trades/prices";
-  instrument_url="http://localhost:3000/fmts/trades/instruments";
+  price_url="http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/trades/prices";
+  instrument_url="http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/trades/instruments";
   constructor(private http:HttpClient) { }
 
   getTradePriceList(filter:string):Observable<Price[]>{

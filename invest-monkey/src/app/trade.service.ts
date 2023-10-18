@@ -17,7 +17,7 @@ export class TradeService
   allInstruments:Instruments[]=[]
    buyReportData: Trade[]=[]
    sellReportData:Trade[]=[]
-  url='http://localhost:3000/fmts/trades/trade';
+  url='http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/trades/trade';
 
   constructor(private http:HttpClient,private instrumentService:InstrumentService) { 
       this.instrumentService.getInstruments().subscribe({
@@ -28,7 +28,7 @@ export class TradeService
   }
   generateNewTrade(order: Order): Observable<Trade | null> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const tradeUrl = "http://localhost:3200/client/trade"; 
+    const tradeUrl = "http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client/trade"; 
 
     return this.http.post<Trade>(tradeUrl, order, { headers: headers }).pipe(
       map((data) => {
@@ -71,7 +71,7 @@ export class TradeService
   // }
   getCurrentUserTrades(clientId:string):Observable<Trade[]>
   {
-    const tradeHistoryUrl = "http://localhost:3200/client/tradeHistory/"+clientId;
+    const tradeHistoryUrl = "http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client/tradeHistory/"+clientId;
 
     return this.http.get<Trade[]>(tradeHistoryUrl);
   }

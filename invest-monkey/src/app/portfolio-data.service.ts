@@ -15,7 +15,7 @@ import { Client } from './models/client';
   providedIn: 'root'
 })
 export class PortfolioDataService implements OnInit {
-  private apiUrl='http://localhost:3000/fmts/trades';
+  private apiUrl='http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3000/fmts/trades';
   private holdings:Holdings[]=[];
   private instruments:Instruments[]=[];
   currentClient?:Client;
@@ -151,7 +151,7 @@ export class PortfolioDataService implements OnInit {
   getHolding(clientId:string):Observable<Holdings[]>{
     console.log("***********************************************************");
     
-    let holdingsUrl="http://localhost:3200/client/holdings/"+clientId;
+    let holdingsUrl="http://ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:3200/client/holdings/"+clientId;
     console.log("holding url=> ",holdingsUrl);
     
     return this.http.get<Holdings[]>(holdingsUrl);
