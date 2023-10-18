@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class InstrumentService {
-  private apiUrl = 'http://localhost:3200/client/prices';
+  private apiUrl = 'http://65.2.3.57:8080/client/prices';
 
   constructor(private http: HttpClient) {}
 

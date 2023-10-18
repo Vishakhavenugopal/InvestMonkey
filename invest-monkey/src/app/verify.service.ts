@@ -23,7 +23,7 @@ export class VerifyService {
     }
   }];
 
-  public readonly url:string="http://localhost:3200/client";
+  public readonly url:string="http://65.2.3.57:8080/client";
   currentClient:Client={
     clientId:'',
     email:'',
@@ -58,7 +58,7 @@ export class VerifyService {
         email: email,
         password: password
       };
-    const loginUrl:string = "http://localhost:3200/client";
+    const loginUrl:string = "http://65.2.3.57:8080/client";
 
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     

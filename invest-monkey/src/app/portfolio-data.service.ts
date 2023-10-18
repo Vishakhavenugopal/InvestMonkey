@@ -151,7 +151,7 @@ export class PortfolioDataService implements OnInit {
   getHolding(clientId:string):Observable<Holdings[]>{
     console.log("***********************************************************");
     
-    let holdingsUrl="http://localhost:3200/client/holdings/"+clientId;
+    let holdingsUrl="http://65.2.3.57:8080/client/holdings/"+clientId;
     console.log("holding url=> ",holdingsUrl);
     
     return this.http.get<Holdings[]>(holdingsUrl);

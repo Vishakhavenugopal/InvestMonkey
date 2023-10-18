@@ -53,7 +53,7 @@ export class RoboAdvicerComponent implements OnInit {
       this.allInstruments = data;
     })
     
-        const roboUrl = "http://localhost:3200/client/roboAdvisor/"+this.currentClientId;
+        const roboUrl = "http://65.2.3.57:8080/client/roboAdvisor/"+this.currentClientId;
         this.http.get<Instruments[]>(roboUrl).subscribe((data)=>
         {
           this.topBuyInstruments = data;
@@ -257,7 +257,7 @@ export class RoboAdvicerComponent implements OnInit {
               this.allInstruments = data;
             })
             
-                const roboUrl = "http://localhost:3200/client/roboAdvisor/"+this.currentClientId;
+                const roboUrl = "http://65.2.3.57:8080/client/roboAdvisor/"+this.currentClientId;
                 this.http.get<Instruments[]>(roboUrl).subscribe((data)=>
                 {
                   this.topBuyInstruments = data;

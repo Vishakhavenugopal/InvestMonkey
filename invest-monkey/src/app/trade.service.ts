@@ -28,7 +28,7 @@ export class TradeService
   }
   generateNewTrade(order: Order): Observable<Trade | null> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const tradeUrl = "http://localhost:3200/client/trade"; 
+    const tradeUrl = "http://65.2.3.57:8080/client/trade"; 
 
     return this.http.post<Trade>(tradeUrl, order, { headers: headers }).pipe(
       map((data) => {
@@ -71,7 +71,7 @@ export class TradeService
   // }
   getCurrentUserTrades(clientId:string):Observable<Trade[]>
   {
-    const tradeHistoryUrl = "http://localhost:3200/client/tradeHistory/"+clientId;
+    const tradeHistoryUrl = "http://65.2.3.57:8080/client/tradeHistory/"+clientId;
 
     return this.http.get<Trade[]>(tradeHistoryUrl);
   }
