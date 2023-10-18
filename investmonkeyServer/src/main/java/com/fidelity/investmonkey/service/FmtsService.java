@@ -25,7 +25,7 @@ import com.fidelity.investmonkey.models.TradeInfo;
 public class FmtsService {
 	
 	 
-	    private String fmtsApiUrl="http://localhost:3000";
+	    private String fmtsApiUrl="http://ec2-65-2-3-57.ap-south-1.compute.amazonaws.com:3000";
 	    
 	    @Autowired
 	    private  RestTemplate restTemplate ;
