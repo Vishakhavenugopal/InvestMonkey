@@ -4,7 +4,9 @@ var app = require('../app');
 var debug = require('debug')('investmonkeymid:server');
 var http = require('http');
 
+var cors = require("cors");
 
+app.use(cors())
 
 var port = normalizePort(process.env.PORT || '3200');
 app.set('port', port);
