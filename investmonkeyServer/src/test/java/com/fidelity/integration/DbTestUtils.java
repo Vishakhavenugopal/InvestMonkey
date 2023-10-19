@@ -22,7 +22,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 public enum DbTestUtils {
 	INSTANCE;
 	
-	private static final String DB_URL = "jdbc:oracle:thin:@//ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:3000:1521/xepdb1";
+	private static final String DB_URL = "jdbc:oracle:thin:@//ec2-3-111-214-97.ap-south-1.compute.amazonaws.com:1521/ORCL";
 	private static final String USER = "scott";
 	private static final String PASSWORD = "TIGER";
 	
